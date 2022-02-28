@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.custom-btn{
+    width: 120px;
+    height: 40px;
+    background-color: cornflowerblue;
+    color: aliceblue;
+    font-weight: bold;
+    padding: 8px 25px;
+    border-radius: 45px;
+    border: none;
+    outline: none;
+}
