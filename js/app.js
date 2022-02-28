@@ -3,7 +3,7 @@ const searchButton = () => {
   const searchBtn = document.getElementById("search-input");
   const searchValue = searchBtn.value;
   searchBtn.value = "";
-  // console.log(searchValue)
+  phoneContainer.textContent ='';
   const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
   fetch(url)
     .then((res) => res.json())
@@ -21,15 +21,13 @@ const allModels = (phones) => {
     // div.classList.add("shadow");
     div.classList.add("rounded");
     div.innerHTML = `
-            <div class="card px-4 py-4 my-4 shadow rounded" style="width: 18rem;">
-                <img src="${phone.image}" style=" height:250px;" class=" card-img-top " alt="...">
+            <div class="card px-2 py-4 my-4 shadow rounded text-center" style="width: 18rem;">
+                <img src="${phone.image}" style=" height:250px;" class=" card-img-top px-3" alt="...">
                 <div class="card-body">
                     <h5 class="card-title  text-danger">Brand:${phone.brand}</h5>
                     <p class="card-title  text-danger">Model:${phone.phone_name}</p>
-                    <p class="card-title  text-danger">Info:${phone.slug}</p>
-                    <button type="button" class="custom-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                     Detail
-                    </button>
+                    <p class="card-title  text-danger">Info:<br> ${phone.slug}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
                 `;
