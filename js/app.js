@@ -2,17 +2,27 @@
 const phoneContainer = document.getElementById("phone-container");
 // single detail
 const singlePhone = document.getElementById("single-phn");
+// error
+const error = document.getElementById("error");
 
 // load all data by input and button
 const searchButton = () => {
   const searchBtn = document.getElementById("search-input");
   const searchValue = searchBtn.value;
-  searchBtn.value = "";
-  phoneContainer.textContent = "";
-  const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
-  fetch(url)
-    .then((res) => res.json())
-    .then((data) => allModels(data.data));
+
+  // if (searchValue == "") {
+  //   searchBtn.value = "";
+  //   phoneContainer.textContent = "";
+  //   error.innerHTML = "Input A Brand Name Line IPhone";
+  //   singlePhone.textContent = "";
+  // } else {
+    searchBtn.value = "";
+    phoneContainer.textContent = "";
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => allModels(data.data));
+  // }
 };
 // show data
 const allModels = (phones) => {
@@ -26,7 +36,7 @@ const allModels = (phones) => {
     const div = document.createElement("div");
     div.classList.add("col-lg-4");
     div.classList.add("col-12");
-    // div.classList.add("shadow");
+
     div.classList.add("rounded");
     div.innerHTML = `
             <div class="card px-2 py-4 my-4 shadow rounded text-center" style="width: 18rem;">
@@ -69,23 +79,31 @@ const singleData = (data) => {
                       <h5 class="card-title lh-base">${data.name}</h5>
                       <h6 class ="lh-base"> Others: </h6>
                       <p ><strong >WLAN:</strong> ${data.others.WLAN} </p>
-                      <p><strong>Bluetooth: </strong>${data.others.Bluetooth} </p>
+                      <p><strong>Bluetooth: </strong>${
+                        data.others.Bluetooth
+                      } </p>
                       <p><strong>GPS: </strong>${data.others.GPS} </p>
                       <p><strong>NFC: </strong>${data.others.NFC} </p>
                       <p><strong>Radio: </strong>${data.others.Radio} </p>
                       <p><strong>USB: </strong>${data.others.USB} </p>
-                      <p class ="lh-base"><strong>Sensors: </strong>${data.others.USB} </p>
+                      <p class ="lh-base"><strong>Sensors: </strong>${
+                        data.others.USB
+                      } </p>
                   </div>
               </div>
               <div class="col-lg-4 px-2">
                   <h6 class ="lh-base"> Features: </h6>
                   <p><strong>Storage:</strong> ${data.mainFeatures.storage} </p>
-                  <p><strong>DisplaySize: </strong>${data.mainFeatures.displaySize} </p>
+                  <p><strong>DisplaySize: </strong>${
+                    data.mainFeatures.displaySize
+                  } </p>
                   <p><strong>ChipSet: </strong>${data.mainFeatures.chipSet} </p>
                   <p><strong>Memory: </strong>${data.mainFeatures.memory} </p>
                   <h6 class="lh-base"> Sensor: </h6>
                   <p><strong>sensore:</strong> ${data.mainFeatures.sensors} </p>
-                  <h6 class="card-title lh-base">${data?.releaseDate}</h6>
+                  <h6 class="card-title lh-base">${
+                    data.releaseDate ? data.releaseDate : "No Relese Date Found"
+                  }</h6>
 
               </div>
         </div>
