@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Smooch+Sans:wght@600&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
+    font-family: 'Smooch Sans', sans-serif;
 }
+/* detail button */
 .custom-btn{
     width: 120px;
     height: 40px;
@@ -14,4 +17,19 @@
     border-radius: 45px;
     border: none;
     outline: none;
+}
+p,h4,h5{
+    font-size: 1.2rem;
+}
+strong{
+    color: darkgreen;
+    font-size: 1.3rem;
+}
+h6{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #6fd67b;
+}
+::placeholder,button{
+    font-size: 1.3rem !important;
 }

@@ -10,11 +10,13 @@ error.style.display = "none";
 const searchButton = () => {
   const searchBtn = document.getElementById("search-input");
   const searchValue = searchBtn.value;
+  // error handle for empty
   if (searchValue == "") {
     searchBtn.value = "";
     phoneContainer.textContent = "";
     error.style.display = "block";
-  } else {
+  }
+  else {
     searchBtn.value = "";
     phoneContainer.textContent = "";
     error.style.display = "none";
@@ -28,18 +30,21 @@ const searchButton = () => {
 const allModels = (phones) => {
   singlePhone.textContent = "";
   const phoneData = phones.slice(0, 20);
+  // eoor for no data found
+  if(phoneData.length == 0){
+    error.style.display = "block";
+  }
   // for each
   phoneData.forEach((phone) => {
     const div = document.createElement("div");
     div.classList.add("col-lg-4");
     div.classList.add("col-12");
-
     div.classList.add("rounded");
     div.innerHTML = `
-            <div class="card px-2 py-4 my-4 shadow rounded text-center" style="width: 18rem;">
+            <div class="card px-2 py-4 my-4 ms-3 shadow rounded text-center" style="width: 18rem;">
                 <img src="${phone.image}" style=" height:250px;" class=" card-img-top px-3" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title  text-danger lh-base">Brand: ${phone.brand}</h5>
+                    <h2 class="card-title  text-danger lh-base">Brand: ${phone.brand}</h2>
                     <p class="card-title  text-danger">Model: ${phone.phone_name}</p>
                     
                     <a href="#" onclick="displayData('${phone.slug}')" class="btn btn-primary">See Detail</a>
@@ -57,21 +62,15 @@ const displayData = (id) => {
 };
 // display single data
 const singleData = (data) => {
-  // console.log(data.others)
-  // console.log(data.mainFeatures)
-  // console.log(data.mainFeatures.sensors)
-  // console.log(data.image)
-  // console.log(data.releaseDate)
-
   const div = document.createElement("div");
   div.innerHTML = `
-          <div class="row my-4 py-3  px-3 lh-base ">
+          <div class="row my-4 py-3 ms-3  px-3 lh-base text-sm-center">
               <div class="col-lg-4">
                   <img src="${data.image}" class="img-fluid h-100" alt="">
               </div>
               <div class="col-lg-4 px-2">
                   <div >
-                      <h5 class="card-title lh-base">${data.name}</h5>
+                      <h3 class="card-title lh-base">${data.name}</h3>
                       <h6 class ="lh-base"> Others: </h6>
                       <p ><strong >WLAN:</strong> ${
                         data.others?.WLAN ? data.others.WLAN : "Not Found"
@@ -93,7 +92,7 @@ const singleData = (data) => {
                       <p><strong>USB: </strong>${
                         data.others?.USB ? data.others.USB : "Not Found"
                       } </p>
-                      <p class ="lh-base"><strong>Sensors: </strong>${
+                      <p class ="lh-base"><strong>Sensore: </strong>${
                         data.others?.USB ? data.others.USB : "Not Found"
                       } </p>
                   </div>
@@ -106,8 +105,8 @@ const singleData = (data) => {
                   } </p>
                   <p><strong>ChipSet: </strong>${data.mainFeatures.chipSet} </p>
                   <p><strong>Memory: </strong>${data.mainFeatures.memory} </p>
-                  <h6 class="lh-base"> Sensor: </h6>
-                  <p><strong>sensore:</strong> ${data.mainFeatures.sensors} </p>
+                  <h6 class="lh-base"> SENSORE: </h6>
+                  <p><strong>Sensores:</strong> ${data.mainFeatures.sensors} </p>
                   <h6 class="card-title lh-base">${
                     data.releaseDate ? data.releaseDate : "No Relese Date Found"
                   }</h6>
@@ -118,6 +117,4 @@ const singleData = (data) => {
   singlePhone.textContent = "";
   singlePhone.appendChild(div);
 };
-
-// loader js
 
