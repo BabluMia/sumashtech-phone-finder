@@ -4,19 +4,25 @@ const phoneContainer = document.getElementById("phone-container");
 const singlePhone = document.getElementById("single-phn");
 // error
 const error = document.getElementById("error");
+error.style.display = "none";
 
 // load all data by input and button
 const searchButton = () => {
   const searchBtn = document.getElementById("search-input");
   const searchValue = searchBtn.value;
-
+  if (searchValue == "") {
     searchBtn.value = "";
     phoneContainer.textContent = "";
+    error.style.display = "block";
+  } else {
+    searchBtn.value = "";
+    phoneContainer.textContent = "";
+    error.style.display = "none";
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => allModels(data.data));
-  // }
+  }
 };
 // show data
 const allModels = (phones) => {
@@ -45,8 +51,6 @@ const allModels = (phones) => {
 };
 // load single data
 const displayData = (id) => {
-  // console.log(id)
-
   fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
     .then((res) => res.json())
     .then((data) => singleData(data.data));
@@ -69,13 +73,29 @@ const singleData = (data) => {
                   <div >
                       <h5 class="card-title lh-base">${data.name}</h5>
                       <h6 class ="lh-base"> Others: </h6>
-                      <p ><strong >WLAN:</strong> ${data.others?.WLAN ? data.others.WLAN:"Not Found"} </p>
-                      <p><strong>Bluetooth: </strong>${data.others?.Bluetooth ? data.others?.Bluetooth:'Not Found'} </p>
-                      <p><strong>GPS: </strong>${data.others?.GPS ? data.others.GPS: 'Not Found'} </p>
-                      <p><strong>NFC: </strong>${data.others?.NFC ? data.others.NFC: 'Not Found'} </p>
-                      <p><strong>Radio: </strong>${data.others?.Radio ? data.others.Radio: 'Not Found'} </p>
-                      <p><strong>USB: </strong>${data.others?.USB ? data.others.USB: 'Not Found'} </p>
-                      <p class ="lh-base"><strong>Sensors: </strong>${data.others?.USB ? data.others.USB:'Not Found'} </p>
+                      <p ><strong >WLAN:</strong> ${
+                        data.others?.WLAN ? data.others.WLAN : "Not Found"
+                      } </p>
+                      <p><strong>Bluetooth: </strong>${
+                        data.others?.Bluetooth
+                          ? data.others?.Bluetooth
+                          : "Not Found"
+                      } </p>
+                      <p><strong>GPS: </strong>${
+                        data.others?.GPS ? data.others.GPS : "Not Found"
+                      } </p>
+                      <p><strong>NFC: </strong>${
+                        data.others?.NFC ? data.others.NFC : "Not Found"
+                      } </p>
+                      <p><strong>Radio: </strong>${
+                        data.others?.Radio ? data.others.Radio : "Not Found"
+                      } </p>
+                      <p><strong>USB: </strong>${
+                        data.others?.USB ? data.others.USB : "Not Found"
+                      } </p>
+                      <p class ="lh-base"><strong>Sensors: </strong>${
+                        data.others?.USB ? data.others.USB : "Not Found"
+                      } </p>
                   </div>
               </div>
               <div class="col-lg-4 px-2">
@@ -98,3 +118,6 @@ const singleData = (data) => {
   singlePhone.textContent = "";
   singlePhone.appendChild(div);
 };
+
+// loader js
+
