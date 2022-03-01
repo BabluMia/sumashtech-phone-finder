@@ -10,12 +10,6 @@ const searchButton = () => {
   const searchBtn = document.getElementById("search-input");
   const searchValue = searchBtn.value;
 
-  // if (searchValue == "") {
-  //   searchBtn.value = "";
-  //   phoneContainer.textContent = "";
-  //   error.innerHTML = "Input A Brand Name Line IPhone";
-  //   singlePhone.textContent = "";
-  // } else {
     searchBtn.value = "";
     phoneContainer.textContent = "";
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
@@ -26,9 +20,6 @@ const searchButton = () => {
 };
 // show data
 const allModels = (phones) => {
-  // console.log(phones);
-  // phones.forEach(phone =>{
-  // })
   singlePhone.textContent = "";
   const phoneData = phones.slice(0, 20);
   // for each
@@ -42,10 +33,10 @@ const allModels = (phones) => {
             <div class="card px-2 py-4 my-4 shadow rounded text-center" style="width: 18rem;">
                 <img src="${phone.image}" style=" height:250px;" class=" card-img-top px-3" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title  text-danger lh-base">Brand:${phone.brand}</h5>
-                    <p class="card-title  text-danger">Model:${phone.phone_name}</p>
-                    <p class="card-title  text-danger">Info:<br> ${phone.slug}</p>
-                    <a href="#" onclick="displayData('${phone.slug}')" class="btn btn-primary">Go somewhere</a>
+                    <h5 class="card-title  text-danger lh-base">Brand: ${phone.brand}</h5>
+                    <p class="card-title  text-danger">Model: ${phone.phone_name}</p>
+                    
+                    <a href="#" onclick="displayData('${phone.slug}')" class="btn btn-primary">See Detail</a>
                 </div>
             </div>
                 `;
@@ -78,17 +69,13 @@ const singleData = (data) => {
                   <div >
                       <h5 class="card-title lh-base">${data.name}</h5>
                       <h6 class ="lh-base"> Others: </h6>
-                      <p ><strong >WLAN:</strong> ${data.others.WLAN} </p>
-                      <p><strong>Bluetooth: </strong>${
-                        data.others.Bluetooth
-                      } </p>
-                      <p><strong>GPS: </strong>${data.others.GPS} </p>
-                      <p><strong>NFC: </strong>${data.others.NFC} </p>
-                      <p><strong>Radio: </strong>${data.others.Radio} </p>
-                      <p><strong>USB: </strong>${data.others.USB} </p>
-                      <p class ="lh-base"><strong>Sensors: </strong>${
-                        data.others.USB
-                      } </p>
+                      <p ><strong >WLAN:</strong> ${data.others?.WLAN ? data.others.WLAN:"Not Found"} </p>
+                      <p><strong>Bluetooth: </strong>${data.others?.Bluetooth ? data.others?.Bluetooth:'Not Found'} </p>
+                      <p><strong>GPS: </strong>${data.others?.GPS ? data.others.GPS: 'Not Found'} </p>
+                      <p><strong>NFC: </strong>${data.others?.NFC ? data.others.NFC: 'Not Found'} </p>
+                      <p><strong>Radio: </strong>${data.others?.Radio ? data.others.Radio: 'Not Found'} </p>
+                      <p><strong>USB: </strong>${data.others?.USB ? data.others.USB: 'Not Found'} </p>
+                      <p class ="lh-base"><strong>Sensors: </strong>${data.others?.USB ? data.others.USB:'Not Found'} </p>
                   </div>
               </div>
               <div class="col-lg-4 px-2">
