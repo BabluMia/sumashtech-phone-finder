@@ -67,7 +67,7 @@ const singleData = (data) => {
               <div class="col-lg-4">
                   <img src="${data.image}" class="img-fluid h-100" alt="">
               </div>
-              <div class="col-lg-4 px-2 mt-2">
+              <div class="col-lg-4 col-md-12 px-2 mt-2">
                   <div >
                       <h3 class="card-title lh-base">${data.name}</h3>
                       <h6 class ="lh-base"> Others: </h6>
@@ -94,9 +94,9 @@ const singleData = (data) => {
                       
                   </div>
               </div>
-              <div class="col-lg-4 px-2">
+              <div class="col-lg-4 col-md-12 px-2">
                   <h6 class="lh-base"> SENSORE: </h6>
-                  <p><strong>Sensores:</strong> ${data.mainFeatures.sensors[5]} ,${data.mainFeatures.sensors[4]},${data.mainFeatures.sensors[0]},${data.mainFeatures.sensors[1]},${data.mainFeatures.sensors[3]},${data.mainFeatures.sensors[2]}</p>
+                  <p > ${data.mainFeatures.sensors} </p>
                   <h6 class ="lh-base"> Features: </h6>
                   <p><strong>Storage:</strong> ${data.mainFeatures.storage} </p>
                   <p><strong>DisplaySize: </strong>${
