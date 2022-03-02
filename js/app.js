@@ -63,7 +63,7 @@ const displayData = (id) => {
 const singleData = (data) => {
   const div = document.createElement("div");
   div.innerHTML = `
-          <div class="row my-4 py-3 ms-3  px-3 lh-base ">
+          <div class="row my-4 py-3  ms-sm-0 ms-1 lh-base ">
               <div class="col-lg-4">
                   <img src="${data.image}" class="img-fluid h-100" alt="">
               </div>
@@ -94,9 +94,9 @@ const singleData = (data) => {
                       
                   </div>
               </div>
-              <div class="col-lg-4 col-md-12 px-2">
+              <div class="col-lg-4 col-md-12">
                   <h6 class="lh-base"> SENSORE: </h6>
-                  <p > ${data.mainFeatures.sensors} </p>
+                  <p class="pe-4"> ${data.mainFeatures.sensors} </p>
                   <h6 class ="lh-base"> Features: </h6>
                   <p><strong>Storage:</strong> ${data.mainFeatures.storage} </p>
                   <p><strong>DisplaySize: </strong>${
