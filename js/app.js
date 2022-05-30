@@ -11,6 +11,7 @@ const searchButton = () => {
   const searchBtn = document.getElementById("search-input");
   const searchValue = searchBtn.value;
   // error handle for empty
+  // testing 
   if (searchValue == "") {
     searchBtn.value = "";
     phoneContainer.textContent = "";
